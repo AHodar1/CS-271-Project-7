@@ -185,7 +185,7 @@ Return Value:
     -void, but the adjacency list will have erased a value representing a former edge
 Errors:
     -std::out_of_range, if either inputted vertex does not exist in the graph
-    --std::out_of_range, if there is no edge between the two inputted vertices
+    -std::out_of_range, if there is no edge between the two inputted vertices
 */
 void Graph::removeEdge(int u, int v)
 {
@@ -207,6 +207,16 @@ void Graph::removeEdge(int u, int v)
     }
 }
 
+/*
+breadthFirstSearch
+Purpose: Make a vector of attributes for each vertex in the graph representing the results of a breadth-first-search
+Parameters:
+    -s, the source vertex to start a breadth first search from
+Return Value:
+    -bfs, a vector of TraversalData representing attributes for each vertex of the graph
+Errors:
+    -std::out_of_range, if the inputted vertex does not exist in the graph
+*/
 std::vector<TraversalData> Graph::breadthFirstSearch(int s)
 {
     std::vector<TraversalData> bfs(adjList.size());
