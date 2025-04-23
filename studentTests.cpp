@@ -86,7 +86,7 @@ int main()
     }
     cout << endl;
     
-    // see page 550
+    // see page 550 in textbook
     cout << "construct txtbookG(6) for testing DFS;" << endl;
     Graph txtbookG(6);
     txtbookG.addEdge(0, 1);
@@ -97,31 +97,36 @@ int main()
     txtbookG.addEdge(2, 4);
     txtbookG.addEdge(2, 5);
     txtbookG.addEdge(5, 5);
-    cout << "textbookG.edgeIn for all possible edges: ";
+    cout << "textbookG.edgeIn for all existing edges: ";
     for (int i = 0; i < 6; i++)
     {
         cout << endl;
         for (int n = 0; n < 6; n++)
         {
-            cout << "(" << i << ", " << n << ") = " << txtbookG.edgeIn(i, n) << ", ";
+            if (txtbookG.edgeIn(i, n))
+            {
+                cout << "(" << i << ", " << n << ") = " << txtbookG.edgeIn(i, n) << ", ";
+            }
         }
     }
     cout << endl;
     
+    // test depthFirstSearch (automatically tests dfsVisit)
+    cout << "Create txtbookG_dfs;" << endl;
     std::vector<TraversalData> txtbookG_dfs = txtbookG.depthFirstSearch();
     for (int i = 0; i < 6; i++)
     {
-        cout << i << " discovery = "<< txtbookG_dfs[i].discovery << ", finish = " << txtbookG_dfs[i].finish << endl;
+        cout << "dfs(" << i << "): discovery = "<< txtbookG_dfs[i].discovery << ", finish = " << txtbookG_dfs[i].finish << ", parent = " << txtbookG_dfs[i].parent << endl;
     }
 
 
-    cout << "construct empty gFile;" << endl;
-    // Graph gFile(0);
-    // gFile = gFile.readFromSTDIN();
+    // test readFromSTDIN
+    cout << "construct gFile = readFromSTDIN();" << endl;
     Graph gFile = Graph::readFromSTDIN();
     cout << "gFile.edgeIn for all possible edges: ";
     for (int i = 0; i < 6; i++)
     {
+        cout << endl;
         for (int n = 0; n < 6; n++)
         {
             // cout << "gFile.edgeIn(" << i << ", " << n << ") = " << g1.edgeIn(i, n) << endl;

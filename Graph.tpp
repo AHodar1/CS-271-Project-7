@@ -40,11 +40,11 @@ Graph::Graph(const Graph &g)
 
 /*
 destructor (~Graph())
-Purpose: cleans up any dynamic data  
+Purpose: cleans up any dynamic data and resets adjList
 Parameters:
     -N/A
 Return Value:
-    -N/A
+    -N/A, but clears adjList
 Errors:
     -N/A
 */
