@@ -22,6 +22,7 @@ int main()
 
     cout << "g1.addEdge(0, 1);" << endl;
     g1.addEdge(0, 1);
+    g1.addEdge(0, 2);
     cout << "g1.edgeIn for all possible edges: ";
     for (int i = 0; i < 4; i++)
     {
