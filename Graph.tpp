@@ -66,10 +66,10 @@ void Graph::dfsVisit(std::vector<TraversalData> &data, int &time, int u, int &or
     data[u].discovery = time;
     for (int v = 0; v < adjList[u].size(); v++)
     {
-        if (data[v].visited == false)
+        if (data[adjList[u][v]].visited == false)
         {
-            data[v].parent = u;
-            dfsVisit(data, time, v, data[v].order);
+            data[adjList[u][v]].parent = u;
+            dfsVisit(data, time, adjList[u][v], order);
         }
     }
     time++;
