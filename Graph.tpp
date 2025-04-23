@@ -111,8 +111,18 @@ void Graph::addEdge(int u, int v)
 
 }
 
-// throw an std::out_of_range exception if u or v is not in the graph
-// throw an std::out_of_range exception if (u, v) is not an edge of the graph
+/*
+removeEdge
+Purpose: Remove an edge between the two inputted vertices
+Parameters:
+    -u, the first vertex the edge to delete leads from
+    -v, the second vertex, which the edge to delete goes to
+Return Value:
+    -void, but the adjacency list will have erased a value representing a former edge
+Errors:
+    -std::out_of_range, if either inputted vertex does not exist in the graph
+    --std::out_of_range, if there is no edge between the two inputted vertices
+*/
 void Graph::removeEdge(int u, int v)
 {
     if (!(vertexIn(u)) || !(vertexIn(v)))
