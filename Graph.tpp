@@ -197,12 +197,24 @@ void Graph::removeEdge(int u, int v)
 
 std::vector<TraversalData> Graph::breadthFirstSearch(int s)
 {
-    std::vector<TraversalData> data(adjList.size());
+    std::vector<TraversalData> bfs(adjList.size());
     if (!(vertexIn(s)))
     {
-        throw std::out_of_range("breadthFirstSearch: vertex not in graph ")
+        throw std::out_of_range("breadthFirstSearch: vertex not in graph");
     }
-    return data;
+    else
+    {
+        for (int i = 0; i < adjList.size(); i++)
+        {
+            bfs[i].visited = false;
+            // -1 = NIL
+            bfs[i].parent = -1;
+            // INT_MAX = infinity
+            bfs[i].distance = __INT_MAX__;
+        }
+    
+    }
+    return bfs;
 }
 /*BFS(G, s)
 	for each vertex u in G.V - {s}
