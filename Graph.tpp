@@ -85,8 +85,18 @@ bool Graph::edgeIn(int u, int v)
     return edgeInGraph;
 }
 
-// throw an std::out_of_range exception if u or v is not in the graph
-void Graph::addEdge(int u, int v)
+/*
+addEdge
+Purpose: Add an edge between the two inputted vertices
+Parameters:
+    -u, the first vertex the edge will lead from
+    -v, the second vertex, which the edge will go to
+Return Value:
+    -void, but the adjacency list will have another value added to represent a new edge
+Errors:
+    -std::out_of_range, if either inputted vertex does not exist in the graph
+    -also will do nothing if there is already an edge where attempting to add a new one
+*/void Graph::addEdge(int u, int v)
 {
     if (!(vertexIn(u)) || !(vertexIn(v)))
     {
