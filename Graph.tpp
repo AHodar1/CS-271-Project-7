@@ -85,10 +85,23 @@ bool Graph::edgeIn(int u, int v)
     return edgeInGraph;
 }
 
+// throw an std::out_of_range exception if u or v is not in the graph
 void Graph::addEdge(int u, int v)
 {
+    if (!(vertexIn(u)) || !(vertexIn(v)))
+    {
+        throw std::out_of_range("vertex does not exist");
+    }
+    
+    if (!(edgeIn(u, v)))
+    {
+        adjList[u].push_back(v);
+    }
+
 }
 
+// throw an std::out_of_range exception if u or v is not in the graph
+// throw an std::out_of_range exception if (u, v) is not an edge of the graph
 void Graph::removeEdge(int u, int v)
 {
 }
