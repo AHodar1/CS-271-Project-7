@@ -62,7 +62,17 @@ Graph &Graph::operator=(const Graph &g)
 void Graph::dfsVisit(std::vector<TraversalData> &data, int &time, int u, int &order)
 {
 }
-
+/*DFS-VISIT(G, u)
+	time++;
+	u.visited = true;
+	u.discovery = time;
+	for each vertex v in G.adj[u]
+		if v.color == W
+			v.pi = u
+			DFS-VISIT(G, V)
+	time++;
+	u.finish = time;
+*/
 /*
 vertexIn
 Purpose: Check if the inputted vertex is in the graph 
@@ -178,7 +188,21 @@ std::vector<TraversalData> Graph::breadthFirstSearch(int s)
 std::vector<TraversalData> Graph::depthFirstSearch(void)
 {
     std::vector<TraversalData> dfs(adjList.size());
-    
+    int time = 0;
+    for (int i = 0; i < adjList.size(); i++)
+    {
+        dfs[i].visited = false;
+        // -1 = NIL
+        dfs[i].parent = -1;
+    }
+    for (int i = 0; i < adjList.size(); i++)
+    {
+        if (dfs[i].visited == false)
+        {
+            // DFS-VISIT
+
+        }
+    }
 
     return dfs;
 }
@@ -191,6 +215,7 @@ std::vector<TraversalData> Graph::depthFirstSearch(void)
 		if u.color==W
 			DFS-VISIT(G,u)
 */
+
 // Graph Graph::readFromSTDIN()
 // {
     // return Graph();
