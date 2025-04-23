@@ -41,7 +41,7 @@ bool Graph::vertexIn(int u)
     bool vertexInGraph = false;
     if (u < adjList.size())
     {
-        vertexIngraph = true;
+        vertexInGraph = true;
     }
     return vertexInGraph;
 }
