@@ -7,14 +7,22 @@
 
 using namespace std;
 
-
+/*
+default constructor
+Purpose: Create an adjacency list with a size equal to the inputted # of vertices in graph
+Parameters:
+    -n, the # of vertices in graph and size of outer vector
+Return Value:
+    -N/A, but creates an empty adjancency list
+Errors:
+    -N/A
+*/
 Graph::Graph(int n)
 {
     // assume vertices are 0...n-1;
-    adjList = std::vector<std::vector<int>>(n);
-    // adjList = new std::vector<int>;
-    
+    adjList = std::vector<std::vector<int>>(n);    
 }
+
 
 Graph::Graph(const Graph &g)
 {
