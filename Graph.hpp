@@ -60,7 +60,7 @@ class Graph {
     // implement this without use the "colors" approach
     std::vector<TraversalData> depthFirstSearch(void);
 
-    Graph readFromSTDIN();
+    static Graph readFromSTDIN();
 };
 
 #include "Graph.tpp"
