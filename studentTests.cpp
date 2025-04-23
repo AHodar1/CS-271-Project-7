@@ -117,7 +117,7 @@ int main()
     std::vector<TraversalData> txtbookG_dfs = txtbookG.depthFirstSearch();
     for (int i = 0; i < txtbookG_dfs.size(); i++)
     {
-        cout << "dfs(" << i << "): discovery = " << txtbookG_dfs[i].discovery << ", finish = " << txtbookG_dfs[i].finish << ", parent = " << txtbookG_dfs[i].parent << endl;
+        cout << "dfs(" << i << "): discovery = " << txtbookG_dfs[i].discovery << ", finish = " << txtbookG_dfs[i].finish << ", parent = " << txtbookG_dfs[i].parent << ", topological ordering = " << txtbookG_dfs[i].order << endl;
     }
 
 
