@@ -38,6 +38,16 @@ Graph::Graph(const Graph &g)
     }
 }
 
+/*
+destructor (~Graph())
+Purpose: cleans up any dynamic data  
+Parameters:
+    -N/A
+Return Value:
+    -N/A
+Errors:
+    -N/A
+*/
 Graph::~Graph(void)
 {
 }
