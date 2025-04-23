@@ -2,66 +2,89 @@
 
 int main()
 {
+    // set booleans to print true/false instead of 1/0 to improve readability
+    cout << std::boolalpha << endl;
 
-    Graph g1(4);
-    cout << "construct g1(4)" << endl;
-    for (int i = 0; i <= 4; i++)
+    int g1Size = 4;
+    // test default constructor
+    cout << "construct g1(" << g1Size << ")" << endl;
+    Graph g1(g1Size);
+
+    // test vertexIn
+    for (int i = 0; i <= g1Size; i++)
     {
-        cout << "g1.vertexIn(" << i << ") = " << g1.vertexIn(i) << endl;
+        cout << "g1.vertexIn(" << i << ") = " << g1.vertexIn(i) << ", ";
     }
+    cout << endl;
+
+    // test edgeIn
     cout << "g1.edgeIn for all possible edges: ";
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < g1Size; i++)
     {
-        for (int n = 0; n < 4; n++)
+        cout << endl;
+        for (int n = 0; n < g1Size; n++)
         {
-            // cout << "g1.edgeIn(" << i << ", " << n << ") = " << g1.edgeIn(i, n) << endl;
             cout << "(" << i << ", " << n << ") = " << g1.edgeIn(i, n) << ", ";
         }
     }
     cout << endl;
 
-    cout << "g1.addEdge(0, 1);" << endl;
+    // test addEdge for two edges with same starting vertex and one different
+    cout << "g1.addEdge(0, 1), (0, 2), (3, 2);" << endl;
     g1.addEdge(0, 1);
     g1.addEdge(0, 2);
+    g1.addEdge(3, 2);
     cout << "g1.edgeIn for all possible edges: ";
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < g1Size; i++)
     {
-        for (int n = 0; n < 4; n++)
+        cout << endl;
+        for (int n = 0; n < g1Size; n++)
         {
-            // cout << "g1.edgeIn(" << i << ", " << n << ") = " << g1.edgeIn(i, n) << endl;
             cout << "(" << i << ", " << n << ") = " << g1.edgeIn(i, n) << ", ";
         }
     }
     cout << endl;
     
-
-    cout << "g1.removeEdge(0, 1);" << endl;
-    g1.removeEdge(0, 1);
-    cout << "g1.edgeIn for all possible edges: ";
-    for (int i = 0; i < 4; i++)
-    {
-        for (int n = 0; n < 4; n++)
-        {
-            // cout << "g1.edgeIn(" << i << ", " << n << ") = " << g1.edgeIn(i, n) << endl;
-            cout << "(" << i << ", " << n << ") = " << g1.edgeIn(i, n) << ", ";
-        }
-    }
-    cout << endl;
-
-    cout << "gCopy(g1)" << endl;
+    // test copy constructor
+    cout << "gCopy(g1);" << endl;
+    int gCopySize = g1Size;
     Graph gCopy(g1);
     cout << "gCopy.edgeIn for all possible edges: ";
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < gCopySize; i++)
     {
-        for (int n = 0; n < 4; n++)
+        cout << endl;
+        for (int n = 0; n < gCopySize; n++)
         {
-            // cout << "gCopy.edgeIn(" << i << ", " << n << ") = " << g1.edgeIn(i, n) << endl;
             cout << "(" << i << ", " << n << ") = " << gCopy.edgeIn(i, n) << ", ";
         }
     }
     cout << endl;
 
-    // cout << gCopy << endl;
+    // test removeEdge
+    cout << "g1.removeEdge(0, 2);" << endl;
+    g1.removeEdge(0, 2);
+    cout << "g1.edgeIn for all possible edges: ";
+    for (int i = 0; i < g1Size; i++)
+    {
+        cout << endl;
+        for (int n = 0; n < g1Size; n++)
+        {
+            cout << "(" << i << ", " << n << ") = " << g1.edgeIn(i, n) << ", ";
+        }
+    }
+    cout << endl;
+
+    // ensure gCopy doesn't follow changes to g1
+    cout << "gCopy.edgeIn for all possible edges: ";
+    for (int i = 0; i < gCopySize; i++)
+    {
+        cout << endl;
+        for (int n = 0; n < gCopySize; n++)
+        {
+            cout << "(" << i << ", " << n << ") = " << gCopy.edgeIn(i, n) << ", ";
+        }
+    }
+    cout << endl;
     
     // see page 550
     cout << "construct txtbookG(6) for testing DFS;" << endl;
@@ -77,9 +100,9 @@ int main()
     cout << "textbookG.edgeIn for all possible edges: ";
     for (int i = 0; i < 6; i++)
     {
+        cout << endl;
         for (int n = 0; n < 6; n++)
         {
-            // cout << "gCopy.edgeIn(" << i << ", " << n << ") = " << g1.edgeIn(i, n) << endl;
             cout << "(" << i << ", " << n << ") = " << txtbookG.edgeIn(i, n) << ", ";
         }
     }
