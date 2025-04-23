@@ -18,7 +18,16 @@ Graph::Graph(int n)
 
 Graph::Graph(const Graph &g)
 {
-
+    adjList = std::vector<std::vector<int>>(g.size());
+    for (int i = 0; i < g.size(); i++)
+    {
+        for (int n = 0; n < g[i].size(); n++)
+        {
+            // cout << "g1.edgeIn(" << i << ", " << n << ") = " << g1.edgeIn(i, n) << endl;
+            // cout << "(" << i << ", " << n << ") = " << g1.edgeIn(i, n) << ", ";
+            adjList.addEdge(i, g[i][n]);
+        }
+    }
 }
 
 Graph::~Graph(void)
