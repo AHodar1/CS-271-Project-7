@@ -36,6 +36,16 @@ void Graph::dfsVisit(std::vector<TraversalData> &data, int &time, int u, int &or
 {
 }
 
+/*
+vertexIn
+Purpose: Check if the inputted vertex is in the graph 
+Parameters:
+    -u, the vertex to check for
+Return Value:
+    -vertexInGraph, a bool to check if vertex is in graph
+Errors:
+    -N/A
+*/
 bool Graph::vertexIn(int u)
 {
     bool vertexInGraph = false;
