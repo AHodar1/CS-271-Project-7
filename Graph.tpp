@@ -212,7 +212,25 @@ std::vector<TraversalData> Graph::breadthFirstSearch(int s)
             // INT_MAX = infinity
             bfs[i].distance = __INT_MAX__;
         }
-    
+        bfs[s].visited = true;
+        bfs[s].distance = 0;
+        std::deque<int> toVisit;
+        toVisit.push_back(s);
+        while (!(toVisit.empty()))
+        {
+            int u = toVisit.front();
+            toVisit.pop_front();
+            for (int v = 0; v < adjList[u].size(); v++)
+            {
+                if (bfs[adjList[u][v]].visited == false)
+                {
+                    bfs[adjList[u][v]].visited = true;
+                    bfs[adjList[u][v]].distance = bfs[u].distance + 1;
+                    bfs[adjList[u][v]].parent = u;
+                    toVisit.push_back(v);
+                }
+            }
+        }
     }
     return bfs;
 }
