@@ -93,9 +93,9 @@ int main()
 
 
     cout << "construct empty gFile;" << endl;
-    Graph gFile(0);
-    gFile = gFile.readFromSTDIN();
-    // Graph gFile = Graph::readFromSTDIN();
+    // Graph gFile(0);
+    // gFile = gFile.readFromSTDIN();
+    Graph gFile = Graph::readFromSTDIN();
     cout << "gFile.edgeIn for all possible edges: ";
     for (int i = 0; i < 6; i++)
     {
