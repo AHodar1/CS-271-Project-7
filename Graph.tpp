@@ -58,7 +58,20 @@ bool Graph::vertexIn(int u)
 
 bool Graph::edgeIn(int u, int v)
 {
-    return false;
+    if (!(vertexIn(u)) || !(vertexIn(v)))
+    {
+        throw std::out_of_range("vertex does not exist");
+    }
+
+    bool edgeInGraph = false;
+    for (int i = 0; i < adjList[u].size(); i++)
+    {
+        if (adjList[u][i] == v)
+        {
+            edgeInGraph = true;
+        }
+    }
+    return edgeInGraph;
 }
 
 void Graph::addEdge(int u, int v)
