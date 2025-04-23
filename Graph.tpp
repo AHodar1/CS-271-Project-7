@@ -18,14 +18,14 @@ Graph::Graph(int n)
 
 Graph::Graph(const Graph &g)
 {
-    adjList = std::vector<std::vector<int>>(g.size());
-    for (int i = 0; i < g.size(); i++)
+    adjList = std::vector<std::vector<int>>(g.adjList.size());
+    for (int i = 0; i < g.adjList.size(); i++)
     {
-        for (int n = 0; n < g[i].size(); n++)
+        for (int n = 0; n < g.adjList[i].size(); n++)
         {
             // cout << "g1.edgeIn(" << i << ", " << n << ") = " << g1.edgeIn(i, n) << endl;
             // cout << "(" << i << ", " << n << ") = " << g1.edgeIn(i, n) << ", ";
-            adjList.addEdge(i, g[i][n]);
+            addEdge(i, g.adjList[i][n]);
         }
     }
 }
