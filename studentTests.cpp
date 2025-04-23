@@ -90,6 +90,22 @@ int main()
     {
         cout << i << " discovery = "<< txtbookG_dfs[i].discovery << ", finish = " << txtbookG_dfs[i].finish << endl;
     }
+
+
+    cout << "construct empty gFile;" << endl;
+    Graph gFile(0);
+    gFile = gFile.readFromSTDIN();
+    cout << "gFile.edgeIn for all possible edges: ";
+    for (int i = 0; i < 6; i++)
+    {
+        for (int n = 0; n < 6; n++)
+        {
+            // cout << "gFile.edgeIn(" << i << ", " << n << ") = " << g1.edgeIn(i, n) << endl;
+            cout << "(" << i << ", " << n << ") = " << gFile.edgeIn(i, n) << ", ";
+        }
+    }
+    cout << endl;
+
     return 0;
 
 }

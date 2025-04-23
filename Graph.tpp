@@ -50,11 +50,23 @@ Errors:
 */
 Graph::~Graph(void)
 {
+    adjList.clear();
 }
 
 Graph &Graph::operator=(const Graph &g)
 {
     // TODO: insert return statement here
+    adjList.clear();
+    adjList = std::vector<std::vector<int>>(g.adjList.size());
+    for (int i = 0; i < g.adjList.size(); i++)
+    {
+        for (int n = 0; n < g.adjList[i].size(); n++)
+        {
+            // cout << "g1.edgeIn(" << i << ", " << n << ") = " << g1.edgeIn(i, n) << endl;
+            // cout << "(" << i << ", " << n << ") = " << g1.edgeIn(i, n) << ", ";
+            addEdge(i, g.adjList[i][n]);
+        }
+    }
     return *this;
 
 }
@@ -289,7 +301,20 @@ std::vector<TraversalData> Graph::depthFirstSearch(void)
 			DFS-VISIT(G,u)
 */
 
-// Graph Graph::readFromSTDIN()
-// {
-    // return Graph();
-// }
+Graph Graph::readFromSTDIN()
+{
+    int size;
+    int numEdges;
+    cin >> size >> numEdges;
+    Graph g(size);
+
+    int u;
+    int v;
+
+    for (int i = 0; i < numEdges; i++)
+    {
+        cin >> u >> v;
+        g.addEdge(u, v);
+    }
+    return g;
+}
