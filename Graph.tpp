@@ -61,6 +61,21 @@ Graph &Graph::operator=(const Graph &g)
 
 void Graph::dfsVisit(std::vector<TraversalData> &data, int &time, int u, int &order)
 {
+    time++;
+    data[u].visited = true;
+    data[u].discovery = time;
+    for (int v = 0; v < adjList[u].size(); v++)
+    {
+        if (data[v].visited == false)
+        {
+            data[v].parent = u;
+            dfsVisit(data, time, v, data[v].order);
+        }
+    }
+    time++;
+    data[u].finish = time;
+    data[u].order = order;
+    order--;
 }
 /*DFS-VISIT(G, u)
 	time++;
@@ -69,7 +84,7 @@ void Graph::dfsVisit(std::vector<TraversalData> &data, int &time, int u, int &or
 	for each vertex v in G.adj[u]
 		if v.color == W
 			v.pi = u
-			DFS-VISIT(G, V)
+			DFS-VISIT(G, v)
 	time++;
 	u.finish = time;
 */
@@ -189,17 +204,19 @@ std::vector<TraversalData> Graph::depthFirstSearch(void)
 {
     std::vector<TraversalData> dfs(adjList.size());
     int time = 0;
+    int order = dfs.size();
     for (int i = 0; i < adjList.size(); i++)
     {
         dfs[i].visited = false;
         // -1 = NIL
         dfs[i].parent = -1;
+        // dfs[i].order = 0;
     }
     for (int i = 0; i < adjList.size(); i++)
     {
         if (dfs[i].visited == false)
         {
-            // DFS-VISIT
+            dfsVisit(dfs, time, i, order);
 
         }
     }
