@@ -71,7 +71,7 @@ bool Graph::edgeIn(int u, int v)
 {
     if (!(vertexIn(u)) || !(vertexIn(v)))
     {
-        throw std::out_of_range("vertex does not exist");
+        throw std::out_of_range("edgeIn: vertex/vertices do not exist");
     }
 
     bool edgeInGraph = false;
@@ -96,11 +96,12 @@ Return Value:
 Errors:
     -std::out_of_range, if either inputted vertex does not exist in the graph
     -also will do nothing if there is already an edge where attempting to add a new one
-*/void Graph::addEdge(int u, int v)
+*/
+void Graph::addEdge(int u, int v)
 {
     if (!(vertexIn(u)) || !(vertexIn(v)))
     {
-        throw std::out_of_range("vertex does not exist");
+        throw std::out_of_range("addEdge: vertex/vertices do not exist");
     }
     
     if (!(edgeIn(u, v)))
@@ -114,6 +115,15 @@ Errors:
 // throw an std::out_of_range exception if (u, v) is not an edge of the graph
 void Graph::removeEdge(int u, int v)
 {
+    if (!(vertexIn(u)) || !(vertexIn(v)))
+    {
+        throw std::out_of_range("removeEdge: vertex does not exist");
+    }
+    if (!(edgeIn(u, v)))
+    {
+        throw std::out_of_range("removeEdge: edge does not exist");
+    }
+
 }
 
 std::vector<TraversalData> Graph::breadthFirstSearch(int s)
