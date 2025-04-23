@@ -56,6 +56,17 @@ bool Graph::vertexIn(int u)
     return vertexInGraph;
 }
 
+/*
+edgeIn
+Purpose: Check for an edge between the two inputted vertices in graph 
+Parameters:
+    -u, the first vertex the edge would lead from
+    -v, the second vertex, which the edge would go to
+Return Value:
+    -edgeInGraph, a bool to check if the wanted edge is in graph
+Errors:
+    -std::out_of_range, if either inputted vertex does not exist in the graph
+*/
 bool Graph::edgeIn(int u, int v)
 {
     if (!(vertexIn(u)) || !(vertexIn(v)))
