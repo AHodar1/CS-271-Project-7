@@ -177,9 +177,20 @@ std::vector<TraversalData> Graph::breadthFirstSearch(int s)
 
 std::vector<TraversalData> Graph::depthFirstSearch(void)
 {
-    return std::vector<TraversalData>();
-}
+    std::vector<TraversalData> dfs(adjList.size());
+    
 
+    return dfs;
+}
+/*DFS(G)
+	for each vertex u in G.V
+		u.color = W
+		u.pi = NIL
+	time = 0
+	for each vertex u in G.V
+		if u.color==W
+			DFS-VISIT(G,u)
+*/
 // Graph Graph::readFromSTDIN()
 // {
     // return Graph();
