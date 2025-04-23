@@ -117,13 +117,20 @@ void Graph::removeEdge(int u, int v)
 {
     if (!(vertexIn(u)) || !(vertexIn(v)))
     {
-        throw std::out_of_range("removeEdge: vertex does not exist");
+        throw std::out_of_range("removeEdge: vertex/vertices do not exist");
     }
     if (!(edgeIn(u, v)))
     {
-        throw std::out_of_range("removeEdge: edge does not exist");
+        throw std::out_of_range("removeEdge: inputted edge does not exist");
     }
-
+    
+    for (int i = 0; i < adjList[u].size(); i++)
+    {
+        if (adjList[u][i] == v)
+        {
+            adjList[u].erase(adjList[u].begin() + i);
+        }
+    }
 }
 
 std::vector<TraversalData> Graph::breadthFirstSearch(int s)

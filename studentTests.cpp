@@ -34,6 +34,20 @@ int main()
     }
     cout << endl;
     
+
+    cout << "g1.removeEdge(0, 1);" << endl;
+    g1.removeEdge(0, 1);
+    cout << "g1.edgeIn for all possible edges: ";
+    for (int i = 0; i < 4; i++)
+    {
+        for (int n = 0; n < 4; n++)
+        {
+            // cout << "g1.edgeIn(" << i << ", " << n << ") = " << g1.edgeIn(i, n) << endl;
+            cout << "(" << i << ", " << n << ") = " << g1.edgeIn(i, n) << ", ";
+        }
+    }
+    cout << endl;
+
     return 0;
 
 }
