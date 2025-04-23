@@ -87,8 +87,9 @@ int main()
     cout << endl;
     
     // see page 550 in textbook
-    cout << "construct txtbookG(6) for testing DFS;" << endl;
-    Graph txtbookG(6);
+    int txtbookG_Size = 6;
+    cout << "construct txtbookG(" << txtbookG_Size << ") for testing DFS;" << endl;
+    Graph txtbookG(txtbookG_Size);
     txtbookG.addEdge(0, 1);
     txtbookG.addEdge(0, 3);
     txtbookG.addEdge(3, 1);
@@ -98,10 +99,10 @@ int main()
     txtbookG.addEdge(2, 5);
     txtbookG.addEdge(5, 5);
     cout << "textbookG.edgeIn for all existing edges: ";
-    for (int i = 0; i < 6; i++)
+    for (int i = 0; i < txtbookG_Size; i++)
     {
         cout << endl;
-        for (int n = 0; n < 6; n++)
+        for (int n = 0; n < txtbookG_Size; n++)
         {
             if (txtbookG.edgeIn(i, n))
             {
@@ -114,9 +115,9 @@ int main()
     // test depthFirstSearch (automatically tests dfsVisit)
     cout << "Create txtbookG_dfs;" << endl;
     std::vector<TraversalData> txtbookG_dfs = txtbookG.depthFirstSearch();
-    for (int i = 0; i < 6; i++)
+    for (int i = 0; i < txtbookG_dfs.size(); i++)
     {
-        cout << "dfs(" << i << "): discovery = "<< txtbookG_dfs[i].discovery << ", finish = " << txtbookG_dfs[i].finish << ", parent = " << txtbookG_dfs[i].parent << endl;
+        cout << "dfs(" << i << "): discovery = " << txtbookG_dfs[i].discovery << ", finish = " << txtbookG_dfs[i].finish << ", parent = " << txtbookG_dfs[i].parent << endl;
     }
 
 
@@ -134,6 +135,14 @@ int main()
         }
     }
     cout << endl;
+
+    // test breadthFirstSearch
+    cout << "Create gFile_bfs;" << endl;
+    std::vector<TraversalData> gFile_bfs = gFile.breadthFirstSearch(0);
+    for (int i = 0; i < gFile_bfs.size(); i++)
+    {
+        cout << "bfs(" << i << "): visited = " << gFile_bfs[i].visited << ", parent = " << gFile_bfs[i].parent << ", distance (from source) = " << gFile_bfs[i].distance << endl;
+    }
 
     return 0;
 
