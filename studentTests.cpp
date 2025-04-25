@@ -137,14 +137,27 @@ int main()
     // }
     // cout << endl;
 
-    // test breadthFirstSearch
-    cout << "Create gFile_bfs;" << endl;
-    std::vector<TraversalData> gFile_bfs = gFile.breadthFirstSearch(0);
-    for (int i = 0; i < gFile_bfs.size(); i++)
+    // test breadthFirstSearch from several sources
+    cout << "Create txtbookG_bfs(0);" << endl;
+    std::vector<TraversalData> txtbookG_bfs = txtbookG.breadthFirstSearch(0);
+    for (int i = 0; i < txtbookG_bfs.size(); i++)
     {
-        cout << "bfs(" << i << "): visited = " << gFile_bfs[i].visited << ", parent = " << gFile_bfs[i].parent << ", distance (from source) = " << gFile_bfs[i].distance << endl;
+        cout << "bfs(" << i << "): visited = " << txtbookG_bfs[i].visited << ", parent = " << txtbookG_bfs[i].parent << ", distance (from source) = " << txtbookG_bfs[i].distance << endl;
     }
 
+    cout << "Create txtbookG_bfs(2);" << endl;
+    std::vector<TraversalData> txtbookG_bfs2 = txtbookG.breadthFirstSearch(2);
+    for (int i = 0; i < txtbookG_bfs2.size(); i++)
+    {
+        cout << "bfs(" << i << "): visited = " << txtbookG_bfs2[i].visited << ", parent = " << txtbookG_bfs2[i].parent << ", distance (from source) = " << txtbookG_bfs2[i].distance << endl;
+    }
+
+    cout << "Create txtbookG_bfs(5);" << endl;
+    std::vector<TraversalData> txtbookG_bfs5 = txtbookG.breadthFirstSearch(5);
+    for (int i = 0; i < txtbookG_bfs5.size(); i++)
+    {
+        cout << "bfs(" << i << "): visited = " << txtbookG_bfs5[i].visited << ", parent = " << txtbookG_bfs5[i].parent << ", distance (from source) = " << txtbookG_bfs5[i].distance << endl;
+    }
     return 0;
 
 }
