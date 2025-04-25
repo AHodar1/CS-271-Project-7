@@ -122,19 +122,20 @@ int main()
 
 
     // test readFromSTDIN
-    cout << "construct gFile = readFromSTDIN();" << endl;
-    Graph gFile = Graph::readFromSTDIN();
-    cout << "gFile.edgeIn for all possible edges: ";
-    for (int i = 0; i < 6; i++)
-    {
-        cout << endl;
-        for (int n = 0; n < 6; n++)
-        {
-            // cout << "gFile.edgeIn(" << i << ", " << n << ") = " << g1.edgeIn(i, n) << endl;
-            cout << "(" << i << ", " << n << ") = " << gFile.edgeIn(i, n) << ", ";
-        }
-    }
-    cout << endl;
+    // commented out for sake of the autograder
+    // cout << "construct gFile = readFromSTDIN();" << endl;
+    // Graph gFile = Graph::readFromSTDIN();
+    // cout << "gFile.edgeIn for all possible edges: ";
+    // for (int i = 0; i < 6; i++)
+    // {
+    //     cout << endl;
+    //     for (int n = 0; n < 6; n++)
+    //     {
+    //         // cout << "gFile.edgeIn(" << i << ", " << n << ") = " << g1.edgeIn(i, n) << endl;
+    //         cout << "(" << i << ", " << n << ") = " << gFile.edgeIn(i, n) << ", ";
+    //     }
+    // }
+    // cout << endl;
 
     // test breadthFirstSearch
     cout << "Create gFile_bfs;" << endl;

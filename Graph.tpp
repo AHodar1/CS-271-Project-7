@@ -23,7 +23,16 @@ Graph::Graph(int n)
     adjList = std::vector<std::vector<int>>(n);    
 }
 
-
+/*
+copy constructor
+Purpose: Create an adjacency list with a size equal to g's adjacency list and fill out the adjacency list with each edge of g
+Parameters:
+    -g, the inputted graph to deep copy
+Return Value:
+    -N/A, but creates an adjancency list deep copy of g
+Errors:
+    -N/A
+*/
 Graph::Graph(const Graph &g)
 {
     adjList = std::vector<std::vector<int>>(g.adjList.size());
@@ -31,8 +40,6 @@ Graph::Graph(const Graph &g)
     {
         for (int n = 0; n < g.adjList[i].size(); n++)
         {
-            // cout << "g1.edgeIn(" << i << ", " << n << ") = " << g1.edgeIn(i, n) << endl;
-            // cout << "(" << i << ", " << n << ") = " << g1.edgeIn(i, n) << ", ";
             addEdge(i, g.adjList[i][n]);
         }
     }
@@ -53,6 +60,16 @@ Graph::~Graph(void)
     adjList.clear();
 }
 
+/*
+assignment operator (operator=)
+Purpose: Deep copy one graph onto another existing graph
+Parameters:
+    -g, the map to be copied
+Return Value:
+    -*this, a pointer to a deep copy of the inputted map
+Errors:
+    -N/A
+*/
 Graph &Graph::operator=(const Graph &g)
 {
     // TODO: insert return statement here
@@ -71,6 +88,20 @@ Graph &Graph::operator=(const Graph &g)
 
 }
 
+/*
+dfsVisit
+Purpose: Helper function for depthFirstSearch
+    Assigns attributes to each member of data and recursively find neighbors of the current vertex
+Parameters:
+    -data, a reference to the vector of TraversalData created in depthFirstSearch
+    -time, a references to the variable tracking time of discovery and finish times of each vertex
+    -u, the current vertex being discovered and altered
+    -order, a reference to the variable tracking topological ordering of each vertex as they finish
+Return Value:
+    -void, but alters and assigns attributes for connected vertices of the graph in data
+Errors:
+    -N/A
+*/
 void Graph::dfsVisit(std::vector<TraversalData> &data, int &time, int u, int &order)
 {
     time++;
@@ -89,17 +120,7 @@ void Graph::dfsVisit(std::vector<TraversalData> &data, int &time, int u, int &or
     data[u].order = order;
     order--;
 }
-/*DFS-VISIT(G, u)
-	time++;
-	u.visited = true;
-	u.discovery = time;
-	for each vertex v in G.adj[u]
-		if v.color == W
-			v.pi = u
-			DFS-VISIT(G, v)
-	time++;
-	u.finish = time;
-*/
+
 /*
 vertexIn
 Purpose: Check if the inputted vertex is in the graph 
@@ -213,7 +234,7 @@ Purpose: Make a vector of attributes for each vertex in the graph representing t
 Parameters:
     -s, the source vertex to start a breadth first search from
 Return Value:
-    -bfs, a vector of TraversalData representing attributes for each vertex of the graph
+    -bfs, a vector of TraversalData representing bfs attributes for each vertex of the graph
 Errors:
     -std::out_of_range, if the inputted vertex does not exist in the graph
 */
@@ -256,28 +277,17 @@ std::vector<TraversalData> Graph::breadthFirstSearch(int s)
     }
     return bfs;
 }
-/*BFS(G, s)
-	for each vertex u in G.V - {s}
-		u.color = W
-		u.d = infinity
-		u.pi = -1
-	s.color = GREY
-	s.d = 0
-	s.pi = -1
-	Q = empty set
-	ENQUEUE(Q, s)
-	while (Q != empty set)
-		u = DEQUEUE(Q)
-		for each vertex v in G.adj[u]
-			if v.color == W
-				v.color = Grey
-				v.d = u.d + 1
-				v.pi = u
-				ENQUEUE(Q, v)
-		u.color = BLACK*/
 
-
-
+/*
+depthFirstSearch
+Purpose: 
+Parameters:
+    -N/A
+Return Value:
+    -dfs, a vector of TraversalData representing dfs attributes for each vertex of the graph
+Errors:
+    -N/A
+*/
 std::vector<TraversalData> Graph::depthFirstSearch(void)
 {
     std::vector<TraversalData> dfs(adjList.size());
@@ -301,16 +311,17 @@ std::vector<TraversalData> Graph::depthFirstSearch(void)
 
     return dfs;
 }
-/*DFS(G)
-	for each vertex u in G.V
-		u.color = W
-		u.pi = NIL
-	time = 0
-	for each vertex u in G.V
-		if u.color==W
-			DFS-VISIT(G,u)
-*/
 
+/*
+readFromSTDIN
+Purpose: Read an inputted file of graph data and construct that graph
+Parameters:
+    -N/A, but there must be a text file read into studentTests
+Return Value:
+    -g, the newly constructed graph
+Errors:
+    -N/A
+*/
 Graph Graph::readFromSTDIN()
 {
     int size;
